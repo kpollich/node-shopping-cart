@@ -1,0 +1,27 @@
+{
+	"apples": 
+	{
+		"price": "2.00",
+		"quantity": "20"
+	},
+	"bananas": 
+	{
+		"price": "1.50",
+		"quantity": "30"
+	},
+	"carrots": 
+	{
+		"price": "2.50",
+		"quantity": "15"
+	},
+	"oranges": 
+	{
+		"price": "3.00",
+		"quantity": "25"
+	},
+	"cereal": 
+	{
+		"price": "3.50",
+		"quantity": "10"
+	}
+}
