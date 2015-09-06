@@ -17,7 +17,25 @@ module.exports =
 	},
 
 	displayCurrentCart: function() {
-		console.log("\nCurrent cart in borderline illegible JSON: %j ", this.cart);
+		// Have to bind here avoid issues with 'this' in the forEach below
+		var currentCart = this.cart
+		console.log("Your cart: ");
+
+		Object.keys(currentCart).forEach(function(i) {
+			console.log("|item: " + i + ", quantity: " + currentCart[i].quantity + " total: $" + currentCart[i].total.toFixed(2) + "|");
+		});
+
+		console.log("Cart Total: " + this.getCartTotal() + "\n");
+	},
+
+	getCartTotal: function() {
+		var total = 0;
+		var currentCart = this.cart;
+		Object.keys(currentCart).forEach(function(i) {
+			total += currentCart[i].total;
+		});
+
+		return "$" + total.toFixed(2);
 	},
 
 	purchaseItem: function(item, quantity, callback){
@@ -30,7 +48,7 @@ module.exports =
 				this.cart[item].total = Number(items[item].price * this.cart[item].quantity);
 			}
 			items[item].quantity -= quantity;
-			console.log("You successfully purchased " + quantity + " " + item + "! Here's your cart and the available items after your purchase: ");
+			console.log("\nYou successfully purchased " + quantity + " " + item + "! Here's your cart and the available items after your purchase: \n");
 			this.displayCurrentCart();
 			this.displayCurrentItems();
 

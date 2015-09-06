@@ -15,8 +15,6 @@ var schema = {
 	}
 };
 
-getInput();
-
 function getInput () {
 	prompt.start();
 	prompt.get(schema, function(err, result) {
@@ -25,7 +23,7 @@ function getInput () {
 			cart.purchaseItem(result.item, result.quantity, getInput);
 		}
 		else {
-			console.log("Quantity too high!");
+			console.log("Unable to make a purchase for that item/quantity. Try again.");
 		}
 	});
 }
@@ -33,3 +31,5 @@ function getInput () {
 function onErr(err) {
 	console.log(err);
 }
+
+getInput();
